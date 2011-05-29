@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>JanelaInterna</class>
+ <widget class="QWidget" name="JanelaInterna">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>793</width>
+    <height>506</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Título</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0" colspan="4">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="Grafico" name="grafico" native="true"/>
+     </item>
+     <item>
+      <widget class="Legenda" name="legenda" native="true">
+       <property name="maximumSize">
+        <size>
+         <width>230</width>
+         <height>16777215</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="0">
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>670</width>
+       <height>27</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="1" column="2">
+    <widget class="QToolButton" name="imprimir">
+     <property name="toolTip">
+      <string>Imprimir imagem</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../imgs/imgs.qrc">
+       <normaloff>:/imgs/imprimir.png</normaloff>:/imgs/imprimir.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>22</width>
+       <height>22</height>
+      </size>
+     </property>
+     <property name="autoRaise">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="3">
+    <widget class="QToolButton" name="salvar">
+     <property name="toolTip">
+      <string>Salvar</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../imgs/imgs.qrc">
+       <normaloff>:/imgs/salvar.png</normaloff>:/imgs/salvar.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>22</width>
+       <height>22</height>
+      </size>
+     </property>
+     <property name="autoRaise">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QToolButton" name="zoom">
+     <property name="toolTip">
+      <string>Zoom -</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../imgs/imgs.qrc">
+       <normaloff>:/imgs/zoom.png</normaloff>:/imgs/zoom.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>22</width>
+       <height>22</height>
+      </size>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="autoRaise">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>Grafico</class>
+   <extends>QWidget</extends>
+   <header>../src/grafico.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>Legenda</class>
+   <extends>QWidget</extends>
+   <header>../src/legenda.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>zoom</tabstop>
+  <tabstop>imprimir</tabstop>
+  <tabstop>salvar</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../imgs/imgs.qrc"/>
+ </resources>
+ <connections/>
+</ui>

@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>JanelaPrincipal</class>
+ <widget class="QMainWindow" name="JanelaPrincipal">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>813</width>
+    <height>589</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Simddef - Sistema de detecção e diagnóstico de falhas</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../imgs/imgs.qrc">
+    <normaloff>:/imgs/falhas.png</normaloff>:/imgs/falhas.png</iconset>
+  </property>
+  <widget class="QWidget" name="widget_central">
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="0" column="0">
+     <widget class="JanelaInterna" name="janela_interna" native="true"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="barra_menu">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>813</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_Arquivo">
+    <property name="title">
+     <string>&amp;Arquivo</string>
+    </property>
+    <addaction name="acao_sair"/>
+   </widget>
+   <widget class="QMenu" name="menu_Configurar">
+    <property name="title">
+     <string>&amp;Configurar</string>
+    </property>
+    <addaction name="acao_cfg_falhas"/>
+    <addaction name="acao_cfg_modulos"/>
+   </widget>
+   <widget class="QMenu" name="menu_Sobre">
+    <property name="title">
+     <string>&amp;Sobre</string>
+    </property>
+    <addaction name="acao_ajuda"/>
+    <addaction name="separator"/>
+    <addaction name="acao_simddef"/>
+    <addaction name="acao_qt"/>
+   </widget>
+   <addaction name="menu_Arquivo"/>
+   <addaction name="menu_Configurar"/>
+   <addaction name="menu_Sobre"/>
+  </widget>
+  <widget class="QStatusBar" name="barra_status"/>
+  <widget class="QToolBar" name="barra_ferramentas">
+   <property name="windowTitle">
+    <string>Barra de ferramentas</string>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>20</width>
+     <height>20</height>
+    </size>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="acao_cfg_falhas"/>
+   <addaction name="acao_cfg_modulos"/>
+  </widget>
+  <widget class="QDockWidget" name="dock_falhas">
+   <property name="minimumSize">
+    <size>
+     <width>250</width>
+     <height>183</height>
+    </size>
+   </property>
+   <property name="features">
+    <set>QDockWidget::DockWidgetMovable</set>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::LeftDockWidgetArea</set>
+   </property>
+   <property name="windowTitle">
+    <string>Configuração das falhas</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>1</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents">
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Arquivo de configuracao de falhas</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QLineEdit" name="end_arq_falhas">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="toolTip">
+          <string>Endereço do arquivo de configuração de falhas</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QToolButton" name="botao_carregar_falhas">
+         <property name="toolTip">
+          <string>Abrir arquivo de configuração de falhas</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../imgs/imgs.qrc">
+           <normaloff>:/imgs/abrir.png</normaloff>:/imgs/abrir.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+         <property name="autoRaise">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QToolButton" name="botao_recarregar_falhas">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="toolTip">
+          <string>Recarregar arquivo de configuração de falhas</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../imgs/imgs.qrc">
+           <normaloff>:/imgs/recarregar.png</normaloff>:/imgs/recarregar.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+         <property name="shortcut">
+          <string>Ctrl+S, Ctrl+R</string>
+         </property>
+         <property name="autoRaise">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="2" column="0">
+      <widget class="QTreeWidget" name="falhas">
+       <property name="toolTip">
+        <string>Lista de falhas cadastradas</string>
+       </property>
+       <column>
+        <property name="text">
+         <string>Lista de falhas</string>
+        </property>
+       </column>
+       <item>
+        <property name="text">
+         <string>Falhas dos atuadores</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Falhas dos sensores</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Falhas do sistema</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="dock_modulos">
+   <property name="minimumSize">
+    <size>
+     <width>250</width>
+     <height>163</height>
+    </size>
+   </property>
+   <property name="features">
+    <set>QDockWidget::DockWidgetMovable</set>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::LeftDockWidgetArea</set>
+   </property>
+   <property name="windowTitle">
+    <string>Configuração dos módulos de detecção</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>1</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_2">
+    <layout class="QGridLayout" name="gridLayout_3">
+     <item row="1" column="0">
+      <widget class="QTableWidget" name="modulos">
+       <property name="toolTip">
+        <string>Lista de módulos cadastrados. Para ativar um módulo, clique duas vezes.</string>
+       </property>
+       <property name="editTriggers">
+        <set>QAbstractItemView::NoEditTriggers</set>
+       </property>
+       <property name="tabKeyNavigation">
+        <bool>false</bool>
+       </property>
+       <property name="selectionMode">
+        <enum>QAbstractItemView::SingleSelection</enum>
+       </property>
+       <property name="gridStyle">
+        <enum>Qt::DotLine</enum>
+       </property>
+       <property name="sortingEnabled">
+        <bool>true</bool>
+       </property>
+       <attribute name="verticalHeaderVisible">
+        <bool>false</bool>
+       </attribute>
+       <column>
+        <property name="text">
+         <string>Tipo</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Falha</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Status</string>
+        </property>
+       </column>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLineEdit" name="end_arq_modulos">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="toolTip">
+          <string>Endereço do arquivo de configuração de módulos</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QToolButton" name="botao_carregar_modulos">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="toolTip">
+          <string>Abrir arquivo de configuração de módulos</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../imgs/imgs.qrc">
+           <normaloff>:/imgs/abrir.png</normaloff>:/imgs/abrir.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+         <property name="autoRaise">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QToolButton" name="botao_recarregar_modulos">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="toolTip">
+          <string>Recarregar arquivo de configuração de módulos</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../imgs/imgs.qrc">
+           <normaloff>:/imgs/recarregar.png</normaloff>:/imgs/recarregar.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+         <property name="shortcut">
+          <string>Ctrl+S, Ctrl+R</string>
+         </property>
+         <property name="autoRaise">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <action name="acao_cfg_falhas">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../imgs/imgs.qrc">
+     <normaloff>:/imgs/falhas.png</normaloff>:/imgs/falhas.png</iconset>
+   </property>
+   <property name="text">
+    <string>Falhas</string>
+   </property>
+   <property name="toolTip">
+    <string>Configurar falhas</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+F</string>
+   </property>
+  </action>
+  <action name="acao_cfg_modulos">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../imgs/imgs.qrc">
+     <normaloff>:/imgs/modulos_blocos.png</normaloff>:/imgs/modulos_blocos.png</iconset>
+   </property>
+   <property name="text">
+    <string>Módulos</string>
+   </property>
+   <property name="toolTip">
+    <string>Configurar módulos</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+M</string>
+   </property>
+  </action>
+  <action name="acao_sair">
+   <property name="icon">
+    <iconset resource="../imgs/imgs.qrc">
+     <normaloff>:/imgs/sair.png</normaloff>:/imgs/sair.png</iconset>
+   </property>
+   <property name="text">
+    <string>Sair</string>
+   </property>
+   <property name="toolTip">
+    <string>Encerrar a aplicação</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+X</string>
+   </property>
+  </action>
+  <action name="acao_ajuda">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../imgs/imgs.qrc">
+     <normaloff>:/imgs/ajuda.png</normaloff>:/imgs/ajuda.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Ajuda</string>
+   </property>
+  </action>
+  <action name="acao_qt">
+   <property name="icon">
+    <iconset resource="../imgs/imgs.qrc">
+     <normaloff>:/imgs/qt.png</normaloff>:/imgs/qt.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Qt</string>
+   </property>
+  </action>
+  <action name="acao_simddef">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../imgs/imgs.qrc">
+     <normaloff>:/imgs/modulos.png</normaloff>:/imgs/modulos.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Simddef</string>
+   </property>
+   <property name="toolTip">
+    <string>Simddef</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>JanelaInterna</class>
+   <extends>QWidget</extends>
+   <header>../src/janela_interna.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>botao_carregar_falhas</tabstop>
+  <tabstop>botao_carregar_modulos</tabstop>
+  <tabstop>botao_recarregar_falhas</tabstop>
+  <tabstop>botao_recarregar_modulos</tabstop>
+  <tabstop>end_arq_falhas</tabstop>
+  <tabstop>falhas</tabstop>
+  <tabstop>end_arq_modulos</tabstop>
+  <tabstop>modulos</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../imgs/imgs.qrc"/>
+  <include location="../cfgs_rnas/rnas.qrc"/>
+ </resources>
+ <connections/>
+</ui>
